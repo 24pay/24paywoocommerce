@@ -131,14 +131,14 @@ function woo_24pay_gateway_init() {
 				'rurl' => array(
 				  'title' => 'RURL',
 				  'type' => 'text',
-				  'description' => 'Specify url to witch customer will be redirected after payment.',
+				  'description' => 'Specify url to which customer will be redirected after payment.',
 				  'default' => get_site_url().'/24pay-rurl/',
 				),
 
 				'nurl' => array(
 				  'title' => 'NURL',
 				  'type' => 'text',
-				  'description' => 'Specify url to witch you will receive notification message.',
+				  'description' => 'Specify url to which you will receive notification message.',
 				  'default' => get_site_url().'/24pay-rurl/',
 				),
 
