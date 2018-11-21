@@ -107,7 +107,7 @@ function woo_24pay_gateway_init() {
 				'mid' => array(
 					'title'       => 'Mid',
 					'type'        => 'text',
-					'description' => 'This controls',
+					'description' => 'This parameter was send to you via SMS after contract sing.',
 					'default'     => 'demoOMED',
 					'desc_tip'    => true,
 				),
@@ -115,7 +115,7 @@ function woo_24pay_gateway_init() {
 				'eshop' => array(
 					'title'       => 'EshopId',
 					'type'        => 'text',
-					'description' => 'This controls',
+					'description' => 'This parameter was send to you via SMS after contract sing.',
 					'default'     => '11111111',
 					'desc_tip'    => true,
 				),
@@ -123,7 +123,7 @@ function woo_24pay_gateway_init() {
 				'key' => array(
 					'title'       => 'Key',
 					'type'        => 'text',
-					'description' => 'This controls',
+					'description' => 'This parameter was send to you via SMS after contract sing.',
 					'default'     => '1234567812345678123456781234567812345678123456781234567812345678',
 					'desc_tip'    => true,
 				),
@@ -132,14 +132,14 @@ function woo_24pay_gateway_init() {
 				  'title' => 'RURL',
 				  'type' => 'text',
 				  'description' => 'Specify url to witch customer will be redirected after payment.',
-				  'default' => '(domain)/24pay-rurl/',
+				  'default' => get_site_url().'/24pay-rurl/',
 				),
 
 				'nurl' => array(
 				  'title' => 'NURL',
 				  'type' => 'text',
 				  'description' => 'Specify url to witch you will receive notification message.',
-				  'default' => '(domain)/24pay-rurl/',
+				  'default' => get_site_url().'/24pay-rurl/',
 				),
 
 				'notify_email' => array(
