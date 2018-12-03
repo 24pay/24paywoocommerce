@@ -139,7 +139,7 @@ function woo_24pay_gateway_init() {
 				  'title' => 'NURL',
 				  'type' => 'text',
 				  'description' => 'Specify url to which you will receive notification message.',
-				  'default' => get_site_url().'/24pay-rurl/',
+				  'default' => get_site_url().'/24pay-nurl/',
 				),
 
 				'notify_email' => array(
