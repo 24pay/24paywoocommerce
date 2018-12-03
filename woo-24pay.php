@@ -294,6 +294,8 @@ function woo_24pay_gateway_init() {
 	  function listener_24pay()
 	  {
 		$fullUrl = get_site_url().$_SERVER['REQUEST_URI'];
+		$httpsUrl="https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		$httpUrl="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; 
 		
 		$gateway = new Woo_24pay_Gateway();
 	    if(isset($_GET['MsTxnId']) && isset($_GET['Result'])) // RURL
@@ -301,13 +303,20 @@ function woo_24pay_gateway_init() {
       		$gateway->process_rurl($_GET['MsTxnId']);
 	    }
 	    else if(isset($_POST['params'])) // NURL
-	    {
-	    	if ($fullUrl == $gateway->settings['nurl']){
+	    {	
+	    	if (($httpsUrl == $gateway->settings['nurl']) || ($httpUrl == $gateway->settings['nurl']) || ($fullUrl == $gateway->settings['nurl'])){
 		    	if(!$gateway->process_nurl($_POST['params']))
 		        	echo 'FAIL';
 		    	else
 		    		echo 'OK';
 	    	}
+		else{
+			echo "URL MISMATCH <br/>";
+			echo "LISTENING ON: ".$gateway->settings['nurl']. "<br/>";
+			echo "HTTPS: ".$httpsUrl. "<br/>";
+			echo "HTTP: ".$httpUrl. "<br/>";
+			echo "FULL: ".$fullUrl. "<br/>";
+		}
 
 	    	die();
 	    }
