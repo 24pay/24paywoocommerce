@@ -311,14 +311,14 @@ function woo_24pay_gateway_init() {
 		    		echo 'OK';
 	    	}
 		else{
-			echo "URL MISMATCH <br/>";
-			echo "LISTENING ON: ".$gateway->settings['nurl']. "<br/>";
-			echo "HTTPS: ".$httpsUrl. "<br/>";
-			echo "HTTP: ".$httpUrl. "<br/>";
-			echo "FULL: ".$fullUrl. "<br/>";
+			//echo "URL MISMATCH <br/>";
+			//echo "LISTENING ON: ".$gateway->settings['nurl']. "<br/>";
+			//echo "HTTPS: ".$httpsUrl. "<br/>";
+			//echo "HTTP: ".$httpUrl. "<br/>";
+			//echo "FULL: ".$fullUrl. "<br/>";
 		}
 
-	    	die();
+	    	//die();
 	    }
 	  }
 }
