@@ -222,7 +222,7 @@ function woo_24pay_gateway_init() {
 
 		}
 
-		public function load_order_by_mstxnid($order_id)
+	    public function load_order_by_mstxnid($order_id)
 	    {
 	      if(function_exists('wc_sequential_order_numbers'))
 	        $order_id = wc_sequential_order_numbers()->find_order_by_order_number($order_id);
@@ -230,6 +230,11 @@ function woo_24pay_gateway_init() {
 	      if(function_exists('wc_seq_order_number_pro'))
 	        $order_id = wc_seq_order_number_pro()->find_order_by_order_number($order_id);
 
+	      if(function_exists('alg_wc_custom_order_numbers')){
+   		$customOrder = new Alg_WC_Custom_Order_Numbers_Core();
+   		$order_id = $customOrder->add_order_number_to_tracking($order_id);
+	      } 
+		    
 	      return wc_get_order($order_id);
 	    }
 
