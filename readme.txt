@@ -14,3 +14,6 @@ Current version 1.0.0
 = Recently Tested [WC 3.6.4 WP 5.2.1]
 = Recently Tested [WC 3.6.2 WP 5.1.1]
 = Recently Tested [WC 3.5.3 WP 5.0.2]
+
+
+Spoločnosť 24-pay poskytuje moduly pre jednoduchú implementáciu komunikácie s platobnou bránou. Moduly boli testované na čistej inštalácií daného CMS systému. Spoločnosť si vyhradzuje právo odmietnuť úpravy modulov spôsobené kolíziami s dodatočne inštalovanými modulmi. Špecifické problémy (notifikovanie klientov, generovanie faktúr a pod) konzultujte s vaším developerom, ktorý môže modul ďalej upravovať podľa vašich predstáv.
