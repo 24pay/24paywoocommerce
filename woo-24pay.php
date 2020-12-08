@@ -224,6 +224,9 @@ function woo_24pay_gateway_init() {
 
 	    public function load_order_by_mstxnid($order_id)
 	    {
+	      if(function_exists('ywson_get_order_id_by_order_number'))
+		$order_id = ywson_get_order_id_by_order_number($order_id);
+		    
 	      if(function_exists('wc_sequential_order_numbers'))
 	        $order_id = wc_sequential_order_numbers()->find_order_by_order_number($order_id);
 
