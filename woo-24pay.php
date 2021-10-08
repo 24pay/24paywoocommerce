@@ -315,8 +315,11 @@ function woo_24pay_gateway_init() {
 	    	if (($httpsUrl == $gateway->settings['nurl']) || ($httpUrl == $gateway->settings['nurl']) || ($fullUrl == $gateway->settings['nurl'])){
 		    	if(!$gateway->process_nurl($_POST['params']))
 		        	echo 'FAIL';
-		    	else
+		    	else{
 		    		echo 'OK';
+				http_response_code(200);
+				die();
+			};
 	    	}
 		else{
 			//echo "URL MISMATCH <br/>";
