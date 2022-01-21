@@ -182,6 +182,8 @@ function woo_24pay_gateway_init() {
 	        'Mid' => $this->settings['mid'],
 	        'EshopId' => $this->settings['eshop'],
 	        'MsTxnId' => $order->get_order_number(),
+	        // Use option below if 3rd party order number plugin is used withou order load support in method load_order_by_mstxnid
+		//'MsTxnId' => $order->get_id(), 
 	        'Amount' => number_format($order->get_total(), 2, '.', ''),
 	        'CurrAlphaCode' => get_woocommerce_currency(),
 	        'ClientId' => $order->get_order_number(),
