@@ -6,7 +6,7 @@ Current version 1.0.1
 = Released  = [08.10.2021]
 = ver 1.0.0 = [21.11.2018]
 
-= Last Time Tested [WC 6.6.1 WP 5.8.1]
+= Last Time Tested [WC 6.1.1 WP 5.8.1]
 = Recently Tested [WC 5.7.1 WP 5.8.1]
 = Recently Tested [WC 5.6.0 WP 5.8.0]
 = Recently Tested [WC 5.2.2 WP 5.7.1]
