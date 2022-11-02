@@ -1,9 +1,10 @@
 == Description ==
 24pay payment gateway for WooCommerce
 
-Current version 1.0.1
+Current version 1.1.0
 
-= Released  = [08.10.2021]
+= Released  = [02.11.2022]
+= ver 1.0.0 = [08.10.2021]
 = ver 1.0.0 = [21.11.2018]
 
 = Last Time Tested [WC 6.1.1 WP 5.8.1]
