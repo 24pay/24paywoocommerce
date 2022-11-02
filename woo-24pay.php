@@ -4,7 +4,7 @@ Plugin Name: Woocommerce 24pay Payment gateway
 Plugin URI: http://www.24-pay.sk
 Description: 24pay Payment Gateway for WooCommerce e-shop.
 Author: 24pay
-Version: 1.0.0
+Version: 1.1.0
 Author URI: https://www.24-pay.sk
 License: MIT
 */
@@ -148,6 +148,13 @@ function woo_24pay_gateway_init() {
 				  'description' => 'Set email where you want receive notification ater payment.',
 				  'default' => '',
 				),
+
+				'notify_client' => array(
+					'title'   => 'Notify client by email',
+					'type'    => 'checkbox',
+					'label'   => 'Send payment status email to client',
+					'default' => 'no'
+				),
 				
 			) );
 		}
@@ -174,7 +181,8 @@ function woo_24pay_gateway_init() {
 	      $order = wc_get_order($order_id);
 
 	      $is_test = (!empty($this->settings['is_test']) && $this->settings['is_test']=='yes') ? true : false;
-
+		  $notify_client = (!empty($this->settings['notify_client']) && $this->settings['notify_client']=='yes') ? true : false;
+		  	
 	      $language = 'SK';
 	      $country = 'SVK';
 
@@ -209,6 +217,9 @@ function woo_24pay_gateway_init() {
 			$data['url'] = 'https://test.24-pay.eu/pay_gate/paygt';
 		  else
 			$data['url'] = 'https://admin.24-pay.eu/pay_gate/paygt';
+
+		  if ($notify_client)
+			$data['NotifyClient'] = $order->get_billing_email();
 
 		  $dataValidator = new WOO_24pay_DataValidator();
 
