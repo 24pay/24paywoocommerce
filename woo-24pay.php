@@ -94,7 +94,7 @@ function woo_24pay_gateway_init() {
 				  'title' => 'Method description',
 				  'type' => 'textarea',
 				  'description' => 'Method description when selected during checkout.',
-				  'default' => 'Zaplaťte bezpečne s vašou kreditnou kartou alebo banovým prevodom pomocou služby 24pay.',
+				  'default' => 'Zaplaťte bezpečne s vašou kreditnou kartou alebo bankovým prevodom pomocou služby 24pay.',
 				),
 				
 				'is_test' => array(
