@@ -168,7 +168,7 @@ function woo_24pay_gateway_init() {
 		function process_payment($order_id)
 	    {
 	      $order = wc_get_order($order_id);
-	      $redirect_url = add_query_arg('key', $order->order_key, $order->get_checkout_payment_url(true));
+	      $redirect_url = add_query_arg('key', $order->get_order_key(), $order->get_checkout_payment_url(true));
 
 	      return array(
 	        'result'    => 'success',
