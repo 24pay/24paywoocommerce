@@ -183,7 +183,8 @@ function woo_24pay_gateway_init() {
 	      $is_test = (!empty($this->settings['is_test']) && $this->settings['is_test']=='yes') ? true : false;
 		  $notify_client = (!empty($this->settings['notify_client']) && $this->settings['notify_client']=='yes') ? true : false;
 		  	
-	      $language = 'SK';
+//	      $language = 'SK';
+	      $language = $this->get_current_lang_code();
 	      $country = 'SVK';
 
 	      $data = array(
@@ -235,6 +236,15 @@ function woo_24pay_gateway_init() {
 
 		}
 
+        public function get_current_lang_code(){
+            $supported_lang_codes = array("cs", "de", "en", "es", "fr", "hu", "it", "pl", "ro", "sk");
+            $lang = get_bloginfo('language');
+            $lang_code = explode("-", $lang);
+            if(!$lang_code) {
+                return "en";
+            }
+            return in_array($lang_code[0], $supported_lang_codes) ? $lang_code[0] : "en";
+        }
 	    public function load_order_by_mstxnid($order_id)
 	    {
 	      if(function_exists('ywson_get_order_id_by_order_number'))
