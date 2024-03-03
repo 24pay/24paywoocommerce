@@ -1,13 +1,16 @@
 == Description ==
 24pay payment gateway for WooCommerce
 
+For proper functionality on the lastest versions of WP disable PageBuilder on the checkout page, otherwise the payment method will not be visible.
+
 Current version 1.1.0
 
 = Released  = [02.11.2022]
 = ver 1.0.1 = [08.10.2021]
 = ver 1.0.0 = [21.11.2018]
 
-= Last Time Tested [WC 8.0.3 WP 6.3.0]
+= Last Time Tested [WC 8.6.1 WP 6.4.3]
+= Recently Tested [WC 8.0.3 WP 6.3.0]
 = Recently Tested [WC 7.6.1 WP 6.2.0]
 = Recently Tested [WC 7.0.1 WP 6.1.0]
 = Recently Tested [WC 6.1.1 WP 5.8.1]
