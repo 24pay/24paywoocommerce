@@ -43,6 +43,12 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'woo_24pay_gat
 
 add_action( 'plugins_loaded', 'woo_24pay_gateway_init', 11 );
 
+add_action('before_woocommerce_init', function(){
+    if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+    }
+});
+
 function woo_24pay_gateway_init() {
 
 	class Woo_24pay_Gateway extends WC_Payment_Gateway {
