@@ -161,6 +161,13 @@ function woo_24pay_gateway_init() {
 					'label'   => 'Send payment status email to client',
 					'default' => 'no'
 				),
+
+                'enable_logs' => array(
+                    'title'   => 'Enable/Disable logs',
+                    'type'    => 'checkbox',
+                    'label'   => 'Enable 24-pay logs',
+                    'default' => 'no'
+                ),
 				
 			) );
 		}
@@ -332,16 +339,16 @@ function woo_24pay_gateway_init() {
 	    }
 
         function write_log($log) {
-            $logfile = fopen(PLUGIN_PATH_24PAY . "log.txt", "a") or die("Unable to open file!");
+            if((!empty($this->settings['enable_logs'])) && $this->settings['enable_logs']=='yes') {
+                $logfile = fopen(PLUGIN_PATH_24PAY . "log.txt", "a") or die("Unable to open file!");
 
-            if (is_array($log) || is_object($log)) {
-                fwrite($logfile, "[" . date("Y-m-d H:i:s", time()) . "] => " . print_r($log, true) . "\n");
+                if (is_array($log) || is_object($log)) {
+                    fwrite($logfile, "[" . date("Y-m-d H:i:s") . "] => " . print_r($log, true) . "\n");
+                } else {
+                    fwrite($logfile, "[" . date("Y-m-d H:i:s") . "] => " . $log . "\n");
+                }
+                fclose($logfile);
             }
-            else {
-                fwrite($logfile, "[" . date("Y-m-d H:i:s", time()) . "] => " . $log . "\n");
-            }
-            fclose($logfile);
-
         }
 		
 	  }
