@@ -287,14 +287,14 @@ function woo_24pay_gateway_init() {
       				wc_add_notice('INVALID REDIRECT SIGN!', 'error');
       			}
       		}
-
+            $this->write_log("RURL: " . $redirectTarget);
       		wp_safe_redirect($redirectTarget);
         	die();
 		}		
 
 		public function process_nurl($xml)
     	{
-	      
+          $this->write_log($xml);
 	      $notification = new WOO_24pay_NurlParser($xml, $this->settings['mid'], $this->settings['key']);
 	      if ($notification->parsed){
 	      	if ($notification->validateSign()){
@@ -305,16 +305,22 @@ function woo_24pay_gateway_init() {
 	      		
 	      		if($notification->result == 'OK')
 		        {
+                    $this->write_log("Notification message received with Success result");
+
 		        	$order->add_order_note("Notification message received with Success result");
 		        	$order->payment_complete();
 		        }
 		        else if($notification->result == 'PENDING')
 		        {
+                    $this->write_log("Notification message received with Pending result");
+
 		        	$order->add_order_note("Notification message received with Pending result");
 		        	$order->update_status('on-hold', '24-pay payment is pending. Payment status will be processed with next notification message.');
 		        }
 		        else
 		        {
+                    $this->write_log("Notification message received with Fail result");
+
 		        	$order->add_order_note("Notification message received with Fail result");
 		        	$order->update_status('failed', '24-pay payment failed.');
 		        }
@@ -324,6 +330,19 @@ function woo_24pay_gateway_init() {
 	      }
 	      return false;
 	    }
+
+        function write_log($log) {
+            $logfile = fopen(PLUGIN_PATH_24PAY . "log.txt", "a") or die("Unable to open file!");
+
+            if (is_array($log) || is_object($log)) {
+                fwrite($logfile, "[" . date("Y-m-d H:i:s", time()) . "] => " . print_r($log, true) . "\n");
+            }
+            else {
+                fwrite($logfile, "[" . date("Y-m-d H:i:s", time()) . "] => " . $log . "\n");
+            }
+            fclose($logfile);
+
+        }
 		
 	  }
   
